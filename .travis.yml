@@ -16,7 +16,6 @@ before_install:
   - docker --version
   - docker-compose --version
 before_script:
-- cp .env.example .env
 - export $(cat .env | grep -v ^# | xargs)
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | sed -e 's/[\/]/-/g' | sed -e 's/[\#]//g'; fi`
 - export DOCKER_IMAGE_DEV=$CI_REGISTRY_IMAGE:dev_$TAG
@@ -25,8 +24,6 @@ before_script:
 - export CI_BUILD_REF=$TRAVIS_COMMIT
 - export CI_BUILD_REF_NAME=$TRAVIS_BRANCH
 - export CI_PROJECT_NAME=$TRAVIS_REPO_SLUG
-- chmod +x setup.sh
-- ./setup.sh
 script:
 - docker-compose build --pull
 # run and check the dev container

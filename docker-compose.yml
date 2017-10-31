@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  dev:
+    container_name: reward-performance-review-dev
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        - CI_BUILD_ID=${CI_BUILD_ID}
+        - CI_BUILD_REF=${CI_BUILD_REF}
+        - CI_BUILD_REF_NAME=${CI_BUILD_REF_NAME}
+        - CI_BUILD_TIME=${CI_BUILD_TIME}
+        - CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE}
+        - CI_PROJECT_NAME=${CI_PROJECT_NAME}
+    # we use image for faster developing with `npm install` already run
+    image: scarlin90/reward-performance-review:dev
+    command: bash -c "yarn run start"
+    environment:
+      NODE_ENV: development
+      VIRTUAL_HOST: 
+      HTTPS_METHOD: noredirect # support both http and https
+    volumes:
+      - .:/opt/app
+    ports:
+      - "4200"
+    restart: unless-stopped
+    # to get this work with https://github.com/jwilder/nginx-proxy
+    # related: https://github.com/jwilder/nginx-proxy/issues/305
+    network_mode: bridge
