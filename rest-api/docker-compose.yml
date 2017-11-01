@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  performancereview.web.rest:
+    image: performancereview.web.rest
+    build:
+      context: .
+      dockerfile: PerformanceReview.Web.Rest/Dockerfile
