@@ -1,0 +1,11 @@
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.deps.json
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.runtimeconfig.json
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.runtimeconfig.dev.json
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.dll
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.pdb
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.csprojResolveAssemblyReference.cache
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.csproj.CoreCompileInputs.cache
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.AssemblyInfoInputs.cache
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.AssemblyInfo.cs
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.dll
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.pdb

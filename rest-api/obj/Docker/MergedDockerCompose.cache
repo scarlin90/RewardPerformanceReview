@@ -1,0 +1,11 @@
+services:
+  performancereview.web.rest:
+    build:
+      context: C:\Users\Sean\source\repos\rest-api
+      dockerfile: PerformanceReview.Web.Rest/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: performancereview.web.rest
+    ports:
+    - 80/tcp
+version: '3.0'
