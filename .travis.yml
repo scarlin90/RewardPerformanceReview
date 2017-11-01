@@ -32,9 +32,9 @@ script:
 #- docker-compose run --rm dev npm run e2e
 # build, run and check the prod image
 - sudo rm -rf .com.google.Chrome*
-- docker-compose run --rm dev ng build --prod
-- docker-compose -f docker-compose.prod.yml build --pull
+#- docker-compose run --rm dev ng build --prod
+#- docker-compose -f docker-compose.prod.yml build --pull
 after_success:
 - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
 - docker push $DOCKER_IMAGE_DEV
-- docker push $DOCKER_IMAGE_PROD
+#- docker push $DOCKER_IMAGE_PROD
