@@ -23,5 +23,8 @@ Below is a list of the software stack I will use to create the application:
 - Assigned reviewing employees can leave more than one feedback comment
 - Potientially the owner of the performance review can add own feedback to their own performance review
 
+## Travis CI
+[RewardPerformanceReview CI](https://travis-ci.org/scarlin90/RewardPerformanceReview)
+
 ## Database Design
 ![Database Design](https://docs.google.com/drawings/d/e/2PACX-1vQCqzKYpezQOlj3oc7pKbzrPkzNbIUc1nCWaMa73LdV-iBWO7gdivyd31M9_6OdvJvQG8PFY05FRPH0/pub?w=960&h=720)
