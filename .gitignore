@@ -38,13 +38,6 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
-.env
-# for teracy-dev file mapping
+# for file mapping
 !dist/.gitkeep
 !node_modules/.gitkeep
-
-# angular-boilerplate
-.angular-cli.json
-package.json
-docker-compose.yml
-docker-compose.prod.yml
