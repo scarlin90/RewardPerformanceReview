@@ -17,4 +17,8 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PerformanceReview.Data.EntityFramework\PerformanceReview.Data.EntityFramework.csproj" />
+  </ItemGroup>
+
 </Project>
