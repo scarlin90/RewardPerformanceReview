@@ -4746,6 +4746,20 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "PerformanceReview.Data.EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PerformanceReview.Data.EntityFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PerformanceReview.Data.EntityFramework.dll": {}
+        }
       }
     }
   },
@@ -12524,12 +12538,18 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "PerformanceReview.Data.EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../PerformanceReview.Data.EntityFramework/PerformanceReview.Data.EntityFramework.csproj",
+      "msbuildProject": "../PerformanceReview.Data.EntityFramework/PerformanceReview.Data.EntityFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "PerformanceReview.Data.EntityFramework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12564,7 +12584,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Sean\\source\\repos\\rest-api\\PerformanceReview.Data.EntityFramework\\PerformanceReview.Data.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\Sean\\source\\repos\\rest-api\\PerformanceReview.Data.EntityFramework\\PerformanceReview.Data.EntityFramework.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
