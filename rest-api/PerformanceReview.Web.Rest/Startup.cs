@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PerformanceReview.Data.EntityFramework;
+using PerformanceReview.Data.EntityFramework.Repository;
+
 
 namespace PerformanceReview.Web.Rest
 {
@@ -27,6 +29,7 @@ namespace PerformanceReview.Web.Rest
         {
             services.AddMvc();
             services.AddDbContext<PerformanceReviewContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PerformanceReviewConnection")));
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

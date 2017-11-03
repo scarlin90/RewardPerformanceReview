@@ -1,8 +1,17 @@
 version: '3'
 
 services:
+  db:
+    image: "microsoft/mssql-server-linux"
+    environment:
+      SA_PASSWORD: "Passw0rd123"
+      ACCEPT_EULA: "Y"
+  
   performancereview.web.rest:
     image: performancereview.web.rest
     build:
       context: .
       dockerfile: PerformanceReview.Web.Rest/Dockerfile
+    depends_on:
+      - db
+   
