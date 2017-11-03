@@ -9,3 +9,5 @@ C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcore
 C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.AssemblyInfo.cs
 C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.dll
 C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\obj\Debug\netcoreapp2.0\PerformanceReview.Web.Rest.pdb
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.dll
+C:\Users\Sean\source\repos\rest-api\PerformanceReview.Web.Rest\bin\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.pdb

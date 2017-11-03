@@ -5261,8 +5261,6 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
-<<<<<<< Updated upstream
-=======
       },
       "PerformanceReview.Data.EntityFramework/1.0.0": {
         "type": "project",
@@ -5280,7 +5278,6 @@
         "runtime": {
           "bin/placeholder/PerformanceReview.Data.EntityFramework.dll": {}
         }
->>>>>>> Stashed changes
       }
     }
   },
@@ -13598,18 +13595,19 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "PerformanceReview.Data.EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../PerformanceReview.Data.EntityFramework/PerformanceReview.Data.EntityFramework.csproj",
+      "msbuildProject": "../PerformanceReview.Data.EntityFramework/PerformanceReview.Data.EntityFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
-<<<<<<< Updated upstream
-      "Microsoft.NETCore.App >= 2.0.0"
-=======
       "Microsoft.EntityFrameworkCore.Design >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "PerformanceReview.Data.EntityFramework >= 1.0.0"
->>>>>>> Stashed changes
     ]
   },
   "packageFolders": {
@@ -13644,7 +13642,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Sean\\source\\repos\\rest-api\\PerformanceReview.Data.EntityFramework\\PerformanceReview.Data.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\Sean\\source\\repos\\rest-api\\PerformanceReview.Data.EntityFramework\\PerformanceReview.Data.EntityFramework.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

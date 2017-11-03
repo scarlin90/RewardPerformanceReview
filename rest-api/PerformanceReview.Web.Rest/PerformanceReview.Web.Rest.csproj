@@ -20,12 +20,13 @@
     <ProjectReference Include="..\PerformanceReview.Data.EntityFramework\PerformanceReview.Data.EntityFramework.csproj" />
   </ItemGroup>
 
-<<<<<<< Updated upstream
-=======
   <ItemGroup>
   	<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   	<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
->>>>>>> Stashed changes
+  <ItemGroup>
+    <ProjectReference Include="..\PerformanceReview.Data.EntityFramework\PerformanceReview.Data.EntityFramework.csproj" />
+  </ItemGroup>
+
 </Project>
