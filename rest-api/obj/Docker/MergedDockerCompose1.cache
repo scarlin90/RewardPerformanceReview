@@ -1,10 +1,17 @@
 services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Passw0rd123
+    image: microsoft/mssql-server-linux
   performancereview.web.rest:
     build:
       args:
         source: obj/Docker/empty/
       context: C:\Users\Sean\source\repos\rest-api
       dockerfile: PerformanceReview.Web.Rest/Dockerfile
+    depends_on:
+    - db
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
