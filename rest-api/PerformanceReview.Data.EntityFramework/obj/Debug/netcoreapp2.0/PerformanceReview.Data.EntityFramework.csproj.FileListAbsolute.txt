@@ -1,9 +1,0 @@
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\bin\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.deps.json
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\bin\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.dll
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.csprojResolveAssemblyReference.cache
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.csproj.CoreCompileInputs.cache
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.AssemblyInfoInputs.cache
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.AssemblyInfo.cs
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\bin\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.pdb
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.dll
-C:\Users\Sean\source\repos\rest-api\PerformanceReview.Data.EntityFramework\obj\Debug\netcoreapp2.0\PerformanceReview.Data.EntityFramework.pdb

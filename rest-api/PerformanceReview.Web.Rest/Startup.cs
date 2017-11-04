@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PerformanceReview.Data.EntityFramework;
+using PerformanceReview.Data.EntityFramework.Entity;
 using PerformanceReview.Data.EntityFramework.Repository;
-
+using PerformanceReview.Web.Rest.Models;
 
 namespace PerformanceReview.Web.Rest
 {
@@ -29,7 +33,7 @@ namespace PerformanceReview.Web.Rest
         {
             services.AddMvc();
             services.AddDbContext<PerformanceReviewContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PerformanceReviewConnection")));
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IPerformanceReviewRepository, PerformanceReviewRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,8 +43,44 @@ namespace PerformanceReview.Web.Rest
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler(appBuilder =>
+                {
+                    appBuilder.Run(async context =>
+                    {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("An unexpected exception occured, please try again later.");
+                    });
+                });
+            }
+
+            AutoMapper.Mapper.Initialize(cfg => 
+            {
+                cfg.CreateMap<Employee, EmployeeDto>();
+                cfg.CreateMap<EmployeeReview, EmployeeReviewDto>();
+            });
 
             app.UseMvc();
+        }
+    }
+
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<PerformanceReviewContext>
+    {
+        public PerformanceReviewContext CreateDbContext(string[] args)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var builder = new DbContextOptionsBuilder<PerformanceReviewContext>();
+
+            var connectionString = configuration.GetConnectionString("PerformanceReviewConnection");
+
+            builder.UseSqlServer(connectionString);
+
+            return new PerformanceReviewContext(builder.Options);
         }
     }
 }

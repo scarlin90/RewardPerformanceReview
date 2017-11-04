@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace PerformanceReview.Data.EntityFramework.Repository
 {
-    public class Repository<T,R> : IRepository<T,R> where T : BaseEntity 
-                                                    where R : DbContext
+    public class Repository<R> : IRepository<R> where R : DbContext
     {
         #region Private Properties
 
         private readonly R context;
-        private DbSet<T> entities;
+        
 
         #endregion
 
@@ -22,39 +21,39 @@ namespace PerformanceReview.Data.EntityFramework.Repository
         public Repository(R context)
         {
             this.context = context;
-            entities = context.Set<T>();
+           
         }
 
         #endregion
 
         #region Sync Methods
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll<T>() where T : BaseEntity
         {
-            return entities.AsEnumerable();
+            return context.Set<T>().AsEnumerable();
         }
 
-        public IQueryable<T> Filter()
+        public IQueryable<T> Filter<T>() where T : BaseEntity
         {
-            return entities.AsNoTracking();
+            return context.Set<T>().AsNoTracking();
         }
 
-        public T Get(long id)
+        public T Get<T>(long id) where T : BaseEntity
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return context.Set<T>().SingleOrDefault(s => s.Id == id);
         }
 
-        public void Insert(T entity)
+        public void Insert<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Add(entity);
+            context.Set<T>().Add(entity);
             context.SaveChanges();
         }
 
-        public void Update(T entity)
+        public void Update<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
@@ -63,13 +62,13 @@ namespace PerformanceReview.Data.EntityFramework.Repository
             context.SaveChanges();
         }
 
-        public void Delete(T entity)
+        public void Delete<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Remove(entity);
+            context.Set<T>().Remove(entity);
             context.SaveChanges();
         }
 
@@ -77,27 +76,27 @@ namespace PerformanceReview.Data.EntityFramework.Repository
 
         #region Async Methods
 
-        public IAsyncEnumerable<T> GetAllAsync()
+        public IAsyncEnumerable<T> GetAllAsync<T>() where T : BaseEntity
         {
-            return entities.ToAsyncEnumerable();
+            return context.Set<T>().ToAsyncEnumerable();
         }
 
-        public async Task<T> GetAsync(long id)
+        public async Task<T> GetAsync<T>(long id) where T : BaseEntity
         {
-            return await entities.SingleOrDefaultAsync(s => s.Id == id);
+            return await context.Set<T>().SingleOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task InsertAsync(T entity)
+        public async Task InsertAsync<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            await entities.AddAsync(entity);
+            await context.Set<T>().AddAsync(entity);
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task UpdateAsync<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
@@ -106,13 +105,13 @@ namespace PerformanceReview.Data.EntityFramework.Repository
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task DeleteAsync<T>(T entity) where T : BaseEntity
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            await entities.AddAsync(entity);
+            await context.Set<T>().AddAsync(entity);
             await context.SaveChangesAsync();
         }
 

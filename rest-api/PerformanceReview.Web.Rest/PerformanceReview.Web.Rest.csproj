@@ -10,6 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>6.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <Version>2.0.0</Version>
@@ -23,10 +26,6 @@
   <ItemGroup>
   	<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   	<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PerformanceReview.Data.EntityFramework\PerformanceReview.Data.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
