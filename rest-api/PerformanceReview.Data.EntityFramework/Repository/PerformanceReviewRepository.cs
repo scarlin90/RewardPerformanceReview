@@ -31,5 +31,10 @@ namespace PerformanceReview.Data.EntityFramework.Repository
         {
             return GetAll<EmployeeReview>().Where(er => er.EmployeeId == employeeId);
         }
+
+        public EmployeeReview GetEmployeeReviewForEmployee(int employeeId, int id)
+        {
+            return GetAll<EmployeeReview>().FirstOrDefault(er => er.EmployeeId == employeeId && er.Id == id);
+        }
     }
 }

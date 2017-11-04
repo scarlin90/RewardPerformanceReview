@@ -78,7 +78,7 @@ namespace PerformanceReview.Web.Rest
 
             var connectionString = configuration.GetConnectionString("PerformanceReviewConnection");
 
-            builder.UseSqlServer(connectionString);
+            builder.UseSqlServer(connectionString, b => b.MigrationsAssembly("PerformanceReview.Web.Rest"));
 
             return new PerformanceReviewContext(builder.Options);
         }

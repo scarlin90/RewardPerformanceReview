@@ -13,5 +13,7 @@ namespace PerformanceReview.Data.EntityFramework.Repository
         IEnumerable<EmployeeReview> GetEmployeeReviewsForEmployee(int employeeId);
 
         bool EmployeeExists(int employeeId);
+
+        EmployeeReview GetEmployeeReviewForEmployee(int employeeId, int id);
     }
 }

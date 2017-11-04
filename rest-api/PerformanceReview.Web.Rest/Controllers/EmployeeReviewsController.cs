@@ -37,30 +37,26 @@ namespace PerformanceReview.Web.Rest.Controllers
             return Ok(employeeReviewsForEmployee);
         }
 
-        // GET api/values
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var employeesFromRepo = PerformanceReviewRepository.GetAll<Employee>();
-            var employees = Mapper.Map<IEnumerable<EmployeeDto>>(employeesFromRepo);
-
-            return Ok(employees);
-        }
-
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetEmployeeReviewForEmployee(int employeeId, int id)
         {
-            var employeeFromRepo = PerformanceReviewRepository.Get<Employee>(id);
-
-            if(employeeFromRepo == null)
+            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
             {
                 return NotFound();
             }
 
-            var employee = Mapper.Map<EmployeeDto>(employeeFromRepo);
+            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
 
-            return Ok(employee);
+            if(employeeReviewForEmployeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var employeeReviewForEmployee = Mapper.Map<EmployeeReviewDto>(employeeReviewForEmployeeFromRepo);
+            return Ok(employeeReviewForEmployee);
+
         }
+
 
         // GET api/values/5
         //[HttpGet("{id}")]
