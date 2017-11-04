@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,10 @@ namespace PerformanceReview.Web.Rest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(setup => {
+                setup.ReturnHttpNotAcceptable = true;
+                setup.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
+            });
             services.AddDbContext<PerformanceReviewContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PerformanceReviewConnection")));
             services.AddScoped<IPerformanceReviewRepository, PerformanceReviewRepository>();
         }
