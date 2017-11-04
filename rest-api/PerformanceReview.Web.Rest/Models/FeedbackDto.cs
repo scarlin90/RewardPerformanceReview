@@ -7,6 +7,6 @@ namespace PerformanceReview.Data.EntityFramework.Entity
     {
         public int EmployeeId { get; set; }
 
-        public int PerformanceReviewId { get; set; }
+        public int EmployeeReviewId { get; set; }
     }
 }

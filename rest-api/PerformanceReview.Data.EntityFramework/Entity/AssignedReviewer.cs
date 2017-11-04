@@ -7,8 +7,8 @@ namespace PerformanceReview.Data.EntityFramework.Entity
 
         public Employee Employee { get; set; }
 
-        public int PerformanceReviewId { get; set; }
+        public int EmployeeReviewId { get; set; }
 
-        public PerformanceReview PerformanceReview { get; set; }
+        public EmployeeReview EmployeeReview { get; set; }
     }
 }

@@ -11,9 +11,10 @@ using System;
 namespace PerformanceReview.Web.Rest.Migrations
 {
     [DbContext(typeof(PerformanceReviewContext))]
-    partial class PerformanceReviewContextModelSnapshot : ModelSnapshot
+    [Migration("20171104144826_Refactor_Remove_One_To_One")]
+    partial class Refactor_Remove_One_To_One
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

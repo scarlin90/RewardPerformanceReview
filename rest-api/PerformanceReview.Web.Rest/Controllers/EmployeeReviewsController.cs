@@ -37,7 +37,7 @@ namespace PerformanceReview.Web.Rest.Controllers
             return Ok(employeeReviewsForEmployee);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetEmployeeReview")]
         public IActionResult GetEmployeeReviewForEmployee(int employeeId, int id)
         {
             if (!PerformanceReviewRepository.EmployeeExists(employeeId))
@@ -57,18 +57,28 @@ namespace PerformanceReview.Web.Rest.Controllers
 
         }
 
-
-        // GET api/values/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpPost()]
+        public IActionResult Post(int employeeId, [FromBody] CreateEmployeeReviewDto employeeReview)
         {
+            if (employeeReview == null)
+            {
+                return BadRequest();
+            }
+
+            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            {
+                return NotFound();
+            }
+
+
+            var employeeReviewEntity = Mapper.Map<EmployeeReview>(employeeReview);
+            employeeReviewEntity.EmployeeId = employeeId;
+            PerformanceReviewRepository.Insert(employeeReviewEntity);
+
+            var newEmployeeReview = Mapper.Map<EmployeeReviewDto>(employeeReviewEntity);
+
+            return CreatedAtRoute("GetEmployeeReview", new { id = newEmployeeReview.Id }, newEmployeeReview);
+
         }
 
         // PUT api/values/5

@@ -63,7 +63,8 @@ namespace PerformanceReview.Web.Rest
             {
                 cfg.CreateMap<Employee, EmployeeDto>();
                 cfg.CreateMap<EmployeeReview, EmployeeReviewDto>();
-                cfg.CreateMap<EmployeeForCreationDto, Employee>();
+                cfg.CreateMap<CreateEmployeeDto, Employee>();
+                cfg.CreateMap<CreateEmployeeReviewDto, EmployeeReview>();
             });
 
             app.UseMvc();

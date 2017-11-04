@@ -46,7 +46,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateEmployee([FromBody]EmployeeForCreationDto employee)
+        public IActionResult Post([FromBody]CreateEmployeeDto employee)
         {
             if (employee == null)
             {
