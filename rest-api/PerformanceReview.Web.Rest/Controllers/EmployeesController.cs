@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PerformanceReview.Data.EntityFramework.Entity;
@@ -69,7 +67,7 @@ namespace PerformanceReview.Web.Rest.Controllers
                 return BadRequest();
             }
 
-            if (!PerformanceReviewRepository.EmployeeExists(id))
+            if (!PerformanceReviewRepository.Exists<Employee>(id))
             {
                 return NotFound();
             }

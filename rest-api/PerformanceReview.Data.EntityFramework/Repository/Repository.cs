@@ -73,6 +73,11 @@ namespace PerformanceReview.Data.EntityFramework.Repository
             context.SaveChanges();
         }
 
+        public bool Exists<T>(int id) where T : BaseEntity
+        {
+            return (GetAll<T>().FirstOrDefault(f => f.Id == id) == null) ? false : true;
+        }
+
         #endregion
 
         #region Async Methods

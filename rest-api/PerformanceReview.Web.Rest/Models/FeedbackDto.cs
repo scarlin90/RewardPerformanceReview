@@ -8,5 +8,7 @@ namespace PerformanceReview.Data.EntityFramework.Entity
         public int EmployeeId { get; set; }
 
         public int EmployeeReviewId { get; set; }
+
+        public string Comment { get; set; }
     }
 }

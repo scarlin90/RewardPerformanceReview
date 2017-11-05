@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PerformanceReview.Data.EntityFramework.Entity;
@@ -25,7 +23,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         {
             IEnumerable<EmployeeReview> employeeReviewsForEmployeeFromRepo = null;
 
-            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }
@@ -49,7 +47,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         {
             EmployeeReview employeeReviewForEmployeeFromRepo = null;
 
-            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }
@@ -81,7 +79,7 @@ namespace PerformanceReview.Web.Rest.Controllers
                 return BadRequest();
             }
 
-            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }
@@ -113,7 +111,7 @@ namespace PerformanceReview.Web.Rest.Controllers
                 return BadRequest();
             }
 
-            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }
@@ -140,10 +138,48 @@ namespace PerformanceReview.Web.Rest.Controllers
 
         }
 
+        [HttpPost("{employeeReviewId}/feedback")]
+        public IActionResult CreateFeedbackEmployeeReviewForEmployee(int employeeReviewId, int employeeId, [FromBody] CreateFeedbackDto feedback)
+        {
+            if (feedback == null)
+            {
+                return BadRequest();
+            }
+
+            if (!PerformanceReviewRepository.Exists<EmployeeReview>(employeeReviewId))
+            {
+                return NotFound();
+            }
+
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
+            {
+                return NotFound();
+            }
+
+
+            var feedbackEntity = Mapper.Map<Feedback>(feedback);
+            feedbackEntity.EmployeeId = employeeId;
+            feedbackEntity.EmployeeReviewId = employeeReviewId;
+
+            try
+            {
+                PerformanceReviewRepository.Insert(feedbackEntity);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Inserting feedback for employee review {employeeReviewId} and employee {employeeId} failed on commit");
+            }
+
+            var newFeedback = Mapper.Map<FeedbackDto>(feedbackEntity);
+
+            return CreatedAtRoute("GetFeedback", new { id = newFeedback.Id }, newFeedback);
+
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployeeReviewForEmployee(int employeeId, int id)
         {
-            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }

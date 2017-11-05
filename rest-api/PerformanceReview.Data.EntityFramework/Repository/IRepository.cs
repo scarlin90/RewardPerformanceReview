@@ -12,7 +12,7 @@ namespace PerformanceReview.Data.EntityFramework.Repository
         void Insert<T>(T entity) where T : BaseEntity;
         void Update<T>(T entity) where T : BaseEntity;
         void Delete<T>(T entity) where T : BaseEntity;
-
+        bool Exists<T>(int id) where T : BaseEntity;
         IAsyncEnumerable<T> GetAllAsync<T>() where T : BaseEntity;
         Task<T> GetAsync<T>(long id) where T : BaseEntity;
         Task InsertAsync<T>(T entity) where T : BaseEntity;
