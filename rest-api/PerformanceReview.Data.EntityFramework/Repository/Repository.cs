@@ -59,6 +59,7 @@ namespace PerformanceReview.Data.EntityFramework.Repository
             {
                 throw new ArgumentNullException("entity");
             }
+            entity.ModTime = DateTime.Now;
             context.SaveChanges();
         }
 

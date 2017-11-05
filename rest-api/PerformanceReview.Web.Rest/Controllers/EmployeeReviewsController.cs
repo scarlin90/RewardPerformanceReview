@@ -20,17 +20,24 @@ namespace PerformanceReview.Web.Rest.Controllers
             PerformanceReviewRepository = performanceReviewRepository;
         }
 
-        // GET api/values
         [HttpGet()]
         public IActionResult GetEmployeeReviewsForEmployee(int employeeId)
         {
+            IEnumerable<EmployeeReview> employeeReviewsForEmployeeFromRepo = null;
 
             if (!PerformanceReviewRepository.EmployeeExists(employeeId))
             {
                 return NotFound();
             }
 
-            var employeeReviewsForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewsForEmployee(employeeId);
+            try
+            {
+                employeeReviewsForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewsForEmployee(employeeId);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Getting employee reviews for employee {employeeId} failed");
+            }
 
             var employeeReviewsForEmployee = Mapper.Map<IEnumerable<EmployeeReviewDto>>(employeeReviewsForEmployeeFromRepo);
 
@@ -40,14 +47,23 @@ namespace PerformanceReview.Web.Rest.Controllers
         [HttpGet("{id}", Name = "GetEmployeeReview")]
         public IActionResult GetEmployeeReviewForEmployee(int employeeId, int id)
         {
+            EmployeeReview employeeReviewForEmployeeFromRepo = null;
+
             if (!PerformanceReviewRepository.EmployeeExists(employeeId))
             {
                 return NotFound();
             }
 
-            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
+            try
+            {
+                employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Getting employee review for employee {employeeId} failed");
+            }
 
-            if(employeeReviewForEmployeeFromRepo == null)
+            if (employeeReviewForEmployeeFromRepo == null)
             {
                 return NotFound();
             }
@@ -58,7 +74,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         }
 
         [HttpPost()]
-        public IActionResult Post(int employeeId, [FromBody] CreateEmployeeReviewDto employeeReview)
+        public IActionResult CreateEmployeeReviewForEmployee(int employeeId, [FromBody] CreateEmployeeReviewDto employeeReview)
         {
             if (employeeReview == null)
             {
@@ -73,7 +89,15 @@ namespace PerformanceReview.Web.Rest.Controllers
 
             var employeeReviewEntity = Mapper.Map<EmployeeReview>(employeeReview);
             employeeReviewEntity.EmployeeId = employeeId;
-            PerformanceReviewRepository.Insert(employeeReviewEntity);
+
+            try
+            { 
+                PerformanceReviewRepository.Insert(employeeReviewEntity);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Inserting employee review for employee {employeeId} failed on commit");
+            }
 
             var newEmployeeReview = Mapper.Map<EmployeeReviewDto>(employeeReviewEntity);
 
@@ -81,16 +105,66 @@ namespace PerformanceReview.Web.Rest.Controllers
 
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult UpdateEmployeeReviewForEmployee(int employeeId, int id, [FromBody] UpdateEmployeeReviewDto employeeReview)
         {
+            if(employeeReview == null)
+            {
+                return BadRequest();
+            }
+
+            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            {
+                return NotFound();
+            }
+
+            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
+
+            if (employeeReviewForEmployeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            Mapper.Map(employeeReview, employeeReviewForEmployeeFromRepo);
+
+            try
+            {
+                PerformanceReviewRepository.Update(employeeReviewForEmployeeFromRepo);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Updating employee review {id} for employee {employeeId} failed on commit");
+            }
+
+            return NoContent();
+
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteEmployeeReviewForEmployee(int employeeId, int id)
         {
+            if (!PerformanceReviewRepository.EmployeeExists(employeeId))
+            {
+                return NotFound();
+            }
+
+            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
+
+            if (employeeReviewForEmployeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                PerformanceReviewRepository.Delete(employeeReviewForEmployeeFromRepo);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Deleting employee review {id} for employee {employeeId} failed on commit");
+            }
+
+            return NoContent();
         }
     }
 }

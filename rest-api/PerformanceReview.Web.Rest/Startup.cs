@@ -62,9 +62,13 @@ namespace PerformanceReview.Web.Rest
             AutoMapper.Mapper.Initialize(cfg => 
             {
                 cfg.CreateMap<Employee, EmployeeDto>();
-                cfg.CreateMap<EmployeeReview, EmployeeReviewDto>();
                 cfg.CreateMap<CreateEmployeeDto, Employee>();
+                cfg.CreateMap<UpdateEmployeeDto, Employee>();
+
+                cfg.CreateMap<EmployeeReview, EmployeeReviewDto>();
                 cfg.CreateMap<CreateEmployeeReviewDto, EmployeeReview>();
+                cfg.CreateMap<UpdateEmployeeReviewDto, EmployeeReview>();
+
             });
 
             app.UseMvc();

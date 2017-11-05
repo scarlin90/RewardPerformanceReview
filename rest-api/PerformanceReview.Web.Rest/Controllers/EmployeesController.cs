@@ -20,9 +20,8 @@ namespace PerformanceReview.Web.Rest.Controllers
             PerformanceReviewRepository = performanceReviewRepository;
         }
 
-        // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetEmployees()
         {
             var employeesFromRepo = PerformanceReviewRepository.GetAll<Employee>();
             var employees = Mapper.Map<IEnumerable<EmployeeDto>>(employeesFromRepo);
@@ -31,7 +30,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         }
 
         [HttpGet("{id}", Name = "GetEmployee")]
-        public IActionResult Get(int id)
+        public IActionResult GetEmployeeById(int id)
         {
             var employeeFromRepo = PerformanceReviewRepository.Get<Employee>(id);
 
@@ -46,7 +45,7 @@ namespace PerformanceReview.Web.Rest.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]CreateEmployeeDto employee)
+        public IActionResult CreateEmployee([FromBody]CreateEmployeeDto employee)
         {
             if (employee == null)
             {
@@ -62,16 +61,61 @@ namespace PerformanceReview.Web.Rest.Controllers
             
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult UpdateEmployee(int id, [FromBody] UpdateEmployeeDto employee)
         {
+            if (employee == null)
+            {
+                return BadRequest();
+            }
+
+            if (!PerformanceReviewRepository.EmployeeExists(id))
+            {
+                return NotFound();
+            }
+
+            var employeeFromRepo = PerformanceReviewRepository.Get<Employee>(id);
+
+            if (employeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            Mapper.Map(employee, employeeFromRepo);
+
+            try
+            {
+                PerformanceReviewRepository.Update(employeeFromRepo);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Updating employee {id} failed on commit");
+            }
+
+            return NoContent();
+
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteEmployee(int id)
         {
+            var employeeFromRepo = PerformanceReviewRepository.Get<Employee>(id);
+
+            if (employeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                PerformanceReviewRepository.Delete(employeeFromRepo);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Deleting employee {id} failed on commit");
+            }
+
+            return NoContent();
         }
     }
 }
