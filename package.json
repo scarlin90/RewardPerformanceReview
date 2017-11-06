@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host=0.0.0.0",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --browsers Chrome_no_sandbox",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
