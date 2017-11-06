@@ -14,17 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  // { path: 'admin-dashboard', component: AdminDashboardComponent },
-  // { path: 'dashboard', component: DashboardComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginComponent,
-    // AdminDashboardComponent,
-    // DashboardComponent
   ],
   imports: [
     BrowserModule,

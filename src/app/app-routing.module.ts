@@ -6,8 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    // { path: 'admin-dashboard', component: AdminDashboardComponent },
-    // { path: 'dashboard', component: DashboardComponent },
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
   ];
 
