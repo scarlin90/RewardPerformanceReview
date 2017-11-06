@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using PerformanceReview.Data.EntityFramework;
 using System;
 
-namespace PerformanceReview.Data.EntityFramework.Migrations
+namespace PerformanceReview.Web.Rest.Migrations
 {
     [DbContext(typeof(PerformanceReviewContext))]
     partial class PerformanceReviewContextModelSnapshot : ModelSnapshot
@@ -29,15 +29,15 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
 
                     b.Property<int>("EmployeeId");
 
-                    b.Property<DateTime>("ModTime");
+                    b.Property<int>("EmployeeReviewId");
 
-                    b.Property<int>("PerformanceReviewId");
+                    b.Property<DateTime>("ModTime");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("PerformanceReviewId");
+                    b.HasIndex("EmployeeReviewId");
 
                     b.ToTable("AssignedReviewers");
                 });
@@ -49,11 +49,17 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
 
                     b.Property<DateTime>("CreTime");
 
+                    b.Property<string>("FirstName");
+
                     b.Property<bool>("IsAdmin");
+
+                    b.Property<string>("JobTitle");
 
                     b.Property<DateTime>("ModTime");
 
                     b.Property<string>("Password");
+
+                    b.Property<string>("Surname");
 
                     b.Property<string>("Username");
 
@@ -67,13 +73,25 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Aspirations");
+
+                    b.Property<string>("Communications");
+
                     b.Property<DateTime>("CreTime");
+
+                    b.Property<string>("DeliveringResults");
 
                     b.Property<int>("EmployeeId");
 
+                    b.Property<string>("Leadership");
+
                     b.Property<DateTime>("ModTime");
 
-                    b.Property<int>("PerformanceReviewId");
+                    b.Property<string>("Objectives");
+
+                    b.Property<string>("OverallPerformance");
+
+                    b.Property<string>("TechnicalPerformance");
 
                     b.HasKey("Id");
 
@@ -85,39 +103,23 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Comment");
+
                     b.Property<DateTime>("CreTime");
 
                     b.Property<int>("EmployeeId");
-
-                    b.Property<DateTime>("ModTime");
-
-                    b.Property<int>("PerformanceReviewId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("PerformanceReviewId");
-
-                    b.ToTable("Feedback");
-                });
-
-            modelBuilder.Entity("PerformanceReview.Data.EntityFramework.Entity.PerformanceReview", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreTime");
 
                     b.Property<int>("EmployeeReviewId");
 
                     b.Property<DateTime>("ModTime");
 
-                    b.Property<string>("ReviewBody");
-
                     b.HasKey("Id");
 
-                    b.ToTable("PerformanceReviews");
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("EmployeeReviewId");
+
+                    b.ToTable("Feedback");
                 });
 
             modelBuilder.Entity("PerformanceReview.Data.EntityFramework.Entity.AssignedReviewer", b =>
@@ -127,9 +129,9 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PerformanceReview.Data.EntityFramework.Entity.PerformanceReview", "PerformanceReview")
+                    b.HasOne("PerformanceReview.Data.EntityFramework.Entity.EmployeeReview", "EmployeeReview")
                         .WithMany()
-                        .HasForeignKey("PerformanceReviewId")
+                        .HasForeignKey("EmployeeReviewId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -140,9 +142,9 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PerformanceReview.Data.EntityFramework.Entity.PerformanceReview", "PerformanceReview")
-                        .WithMany()
-                        .HasForeignKey("PerformanceReviewId")
+                    b.HasOne("PerformanceReview.Data.EntityFramework.Entity.EmployeeReview", "EmployeeReview")
+                        .WithMany("Feedback")
+                        .HasForeignKey("EmployeeReviewId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

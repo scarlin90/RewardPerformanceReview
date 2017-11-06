@@ -1,15 +1,13 @@
 ﻿
+using PerformanceReview.Web.Rest.Models;
+
 namespace PerformanceReview.Data.EntityFramework.Entity
 {
-    public class Feedback : BaseEntity
+    public class FeedbackDto : BaseDto
     {
         public int EmployeeId { get; set; }
 
-        public Employee Employee { get; set; }
-
         public int EmployeeReviewId { get; set; }
-
-        public EmployeeReview EmployeeReview { get; set; }
 
         public string Comment { get; set; }
     }

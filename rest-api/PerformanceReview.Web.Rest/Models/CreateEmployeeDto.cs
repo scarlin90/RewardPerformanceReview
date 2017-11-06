@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace PerformanceReview.Data.EntityFramework.Entity
+﻿
+namespace PerformanceReview.Web.Rest.Models
 {
-    public class Employee : BaseEntity
+    public class CreateEmployeeDto 
     {
         public string Username { get; set; }
         public string Password { get; set; }
@@ -10,6 +9,5 @@ namespace PerformanceReview.Data.EntityFramework.Entity
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string JobTitle { get; set; }
-        List<EmployeeReview> EmployeeReviews { get; set; }
     }
 }

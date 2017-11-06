@@ -1,11 +1,8 @@
 ﻿
-using System.Collections.Generic;
-
-namespace PerformanceReview.Data.EntityFramework.Entity
+namespace PerformanceReview.Web.Rest.Models
 {
-    public class EmployeeReview : BaseEntity
+    public class CreateEmployeeReviewDto
     {
-        public int EmployeeId { get; set; }
         public string Objectives { get; set; }
         public string OverallPerformance { get; set; }
         public string TechnicalPerformance { get; set; }
@@ -13,6 +10,5 @@ namespace PerformanceReview.Data.EntityFramework.Entity
         public string Communications { get; set; }
         public string Leadership { get; set; }
         public string Aspirations { get; set; }
-        public List<Feedback> Feedback { get; set; }
     }
 }

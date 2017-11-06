@@ -5,20 +5,18 @@ using System.Threading.Tasks;
 
 namespace PerformanceReview.Data.EntityFramework.Repository
 {
-    public interface IRepository<T, R> where T : BaseEntity
-                                       where R : DbContext
+    public interface IRepository<R> where R : DbContext
     {
-        IEnumerable<T> GetAll();
-        T Get(long id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-
-        IAsyncEnumerable<T> GetAllAsync();
-        Task<T> GetAsync(long id);
-        Task InsertAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
-        
+        IEnumerable<T> GetAll<T>() where T : BaseEntity;
+        T Get<T>(long id) where T : BaseEntity;
+        void Insert<T>(T entity) where T : BaseEntity;
+        void Update<T>(T entity) where T : BaseEntity;
+        void Delete<T>(T entity) where T : BaseEntity;
+        bool Exists<T>(int id) where T : BaseEntity;
+        IAsyncEnumerable<T> GetAllAsync<T>() where T : BaseEntity;
+        Task<T> GetAsync<T>(long id) where T : BaseEntity;
+        Task InsertAsync<T>(T entity) where T : BaseEntity;
+        Task UpdateAsync<T>(T entity) where T : BaseEntity;
+        Task DeleteAsync<T>(T entity) where T : BaseEntity;
     }
 }

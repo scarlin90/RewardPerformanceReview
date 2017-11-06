@@ -41,3 +41,10 @@ Thumbs.db
 # for file mapping
 !dist/.gitkeep
 !node_modules/.gitkeep
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages

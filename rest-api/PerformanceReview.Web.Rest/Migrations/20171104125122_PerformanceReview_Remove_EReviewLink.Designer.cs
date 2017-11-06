@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using PerformanceReview.Data.EntityFramework;
 using System;
 
-namespace PerformanceReview.Data.EntityFramework.Migrations
+namespace PerformanceReview.Web.Rest.Migrations
 {
     [DbContext(typeof(PerformanceReviewContext))]
-    partial class PerformanceReviewContextModelSnapshot : ModelSnapshot
+    [Migration("20171104125122_PerformanceReview_Remove_EReviewLink")]
+    partial class PerformanceReview_Remove_EReviewLink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,8 +110,6 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
 
                     b.Property<DateTime>("CreTime");
 
-                    b.Property<int>("EmployeeReviewId");
-
                     b.Property<DateTime>("ModTime");
 
                     b.Property<string>("ReviewBody");
@@ -141,7 +140,7 @@ namespace PerformanceReview.Data.EntityFramework.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PerformanceReview.Data.EntityFramework.Entity.PerformanceReview", "PerformanceReview")
-                        .WithMany()
+                        .WithMany("Feedback")
                         .HasForeignKey("PerformanceReviewId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
