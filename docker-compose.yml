@@ -24,7 +24,7 @@ services:
     volumes:
       - .:/opt/app
     ports:
-      - "4200"
+      - 4200:4200
     restart: unless-stopped
     # to get this work with https://github.com/jwilder/nginx-proxy
     # related: https://github.com/jwilder/nginx-proxy/issues/305
