@@ -4,7 +4,7 @@ import { Http, Response, RequestOptionsArgs, RequestOptions, Headers } from '@an
 import { HttpResponse } from './http-response';
 
 @Injectable()
-export class HttpCommonService {
+export class HttpService {
 
     header: Headers;
 
