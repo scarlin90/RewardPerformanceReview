@@ -1,3 +1,14 @@
+.login-container
+{
+    margin-top:15%
+}
+
+.login 
+{
+    margin: 0 auto;
+    width: 15%;
+}
+
 .form-signin
 {
     max-width: 330px;
