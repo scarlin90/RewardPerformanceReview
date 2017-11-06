@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4">
+          <div class="account-wall">
+              <img class="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="">
+              <div class="form-signin">
+                <input [(ngModel)]="authenticateRequestDto.username" type="text" class="form-control" placeholder="Username" required autofocus>
+                <input [(ngModel)]="authenticateRequestDto.password" type="password" class="form-control" placeholder="Password" required>
+                <button (click)="authenticate(authenticateRequestDto)" class="btn btn-lg btn-primary btn-block">
+                    Sign in
+                </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

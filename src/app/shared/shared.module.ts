@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
   providers: [HttpService],
   imports: [
     HttpModule,
-    SharedModule,
   ],
 })
 export class SharedModule { }
