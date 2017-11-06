@@ -1,11 +1,25 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { SharedModule } from './shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpService, LocalStorageService } from './shared/index';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
       ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        SharedModule],
+        providers: [HttpService, LocalStorageService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
