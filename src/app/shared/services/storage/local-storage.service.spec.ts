@@ -30,14 +30,38 @@ describe('LocalStorageService', () => {
 
     localStorage.setItem('objectInStorage', JSON.stringify(objectToStore));
     // act
-    const localStorageStream = service.get<TestObject>('objectInStorage')
-                          .subscribe((obj: TestObject) => {
-                            this.returnedObject = obj;
-                          });
+    const localStorageGetStream = service.get<TestObject>('objectInStorage')
+                              .subscribe((obj: TestObject) => {
+                                this.returnedObject = obj;
+                              });
 
     // assert
     expect(this.returnedObject).toBeDefined();
     expect(this.returnedObject.testProp).toBeDefined();
     expect(this.returnedObject.testProp).toBe(objectToStore.testProp);
   }));
+
+  it('LSS003 -should set item in storage', inject([LocalStorageService], (service: LocalStorageService) => {
+
+        // arrange
+        const isStored = false;
+        const objectToStore = new TestObject();
+        const returnedObject: TestObject = undefined;
+
+        const localStorageSetStream = service.set<TestObject>('objectInStorage', objectToStore)
+                                    .subscribe((s: boolean) => {
+                                      this.isStored = s;
+                                    });
+
+        const localStorageGetStream = service.get<TestObject>('objectInStorage')
+        .subscribe((obj: TestObject) => {
+          this.returnedObject = obj;
+        });
+
+        // assert
+        expect(this.isStored).toBeTruthy();
+        expect(this.returnedObject).toBeDefined();
+        expect(this.returnedObject.testProp).toBeDefined();
+        expect(this.returnedObject.testProp).toBe(objectToStore.testProp);
+      }));
 });
