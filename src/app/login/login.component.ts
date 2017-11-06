@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService, LocalStorageService, HttpResponse, AuthenticateRequestDto, EmployeeDto } from '../shared/index';
 import { environment } from '../../environments/environment';
 
@@ -12,13 +13,16 @@ export class LoginComponent implements OnInit {
 
   httpService: HttpService;
   localStorageService: LocalStorageService;
+  router: Router;
+
   authenticateRequestDto: AuthenticateRequestDto;
   employeeDto: EmployeeDto;
   isStored: boolean;
 
-  constructor(httpService: HttpService, localStorageService: LocalStorageService) {
+  constructor(httpService: HttpService, localStorageService: LocalStorageService, router: Router) {
     this.httpService = httpService;
     this.localStorageService = localStorageService;
+    this.router = router;
     this.authenticateRequestDto = new AuthenticateRequestDto();
     this.isStored = false;
   }
@@ -46,6 +50,14 @@ export class LoginComponent implements OnInit {
                             (isSaved) => {
                               this.isStored = isSaved;
                               console.log('saved auth details');
+
+                              if (this.employeeDto.isAdmin) {
+                                this.router.navigate(['/admin-dashboard']);
+
+                              } else {
+                                this.router.navigateByUrl('/dashboard');
+
+                              }
                             },
                             err => { console.log(err); });
                         }
