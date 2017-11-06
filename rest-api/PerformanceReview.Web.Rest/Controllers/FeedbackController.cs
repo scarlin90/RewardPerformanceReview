@@ -11,12 +11,22 @@ namespace PerformanceReview.Web.Rest.Controllers
     [Route("api/employeereviews/{employeeReviewId}/feedback")]
     public class FeedbackController : Controller
     {
+        #region Private Properties
+
         private IPerformanceReviewRepository PerformanceReviewRepository { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public FeedbackController(IPerformanceReviewRepository performanceReviewRepository)
         {
             PerformanceReviewRepository = performanceReviewRepository;
         }
+
+        #endregion
+
+        #region Public Methods
 
         [HttpGet()]
         public IActionResult GetFeedbackForEmployeeReviews(int employeeReviewId)
@@ -160,5 +170,7 @@ namespace PerformanceReview.Web.Rest.Controllers
 
             return NoContent();
         }
+
+        #endregion
     }
 }

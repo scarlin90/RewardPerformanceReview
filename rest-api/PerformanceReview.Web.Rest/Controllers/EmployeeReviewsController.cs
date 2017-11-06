@@ -11,12 +11,24 @@ namespace PerformanceReview.Web.Rest.Controllers
     [Route("api/employees/{employeeId}/employeereviews")]
     public class EmployeeReviewsController : Controller
     {
+        #region Private Properties
+
         private IPerformanceReviewRepository PerformanceReviewRepository { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public EmployeeReviewsController(IPerformanceReviewRepository performanceReviewRepository)
         {
             PerformanceReviewRepository = performanceReviewRepository;
         }
+
+        #endregion
+
+        #region Public Methods
+
+        #region EmployeeReview
 
         [HttpGet()]
         public IActionResult GetEmployeeReviewsForEmployee(int employeeId)
@@ -138,6 +150,37 @@ namespace PerformanceReview.Web.Rest.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEmployeeReviewForEmployee(int employeeId, int id)
+        {
+            if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
+            {
+                return NotFound();
+            }
+
+            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
+
+            if (employeeReviewForEmployeeFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                PerformanceReviewRepository.Delete(employeeReviewForEmployeeFromRepo);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Deleting employee review {id} for employee {employeeId} failed on commit");
+            }
+
+            return NoContent();
+        }
+
+        #endregion
+
+        #region Feedback
+
         [HttpPost("{employeeReviewId}/feedback")]
         public IActionResult CreateFeedbackEmployeeReviewForEmployee(int employeeReviewId, int employeeId, [FromBody] CreateFeedbackDto feedback)
         {
@@ -176,31 +219,46 @@ namespace PerformanceReview.Web.Rest.Controllers
 
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteEmployeeReviewForEmployee(int employeeId, int id)
+        #endregion
+
+        #region AssignedReviewers
+
+        [HttpPost("{employeeReviewId}/assignedreviewers")]
+        public IActionResult CreateAssignedReviewer(int employeeReviewId, int employeeId)
         {
+            if (!PerformanceReviewRepository.Exists<EmployeeReview>(employeeReviewId))
+            {
+                return NotFound();
+            }
+
             if (!PerformanceReviewRepository.Exists<Employee>(employeeId))
             {
                 return NotFound();
             }
 
-            var employeeReviewForEmployeeFromRepo = PerformanceReviewRepository.GetEmployeeReviewForEmployee(employeeId, id);
-
-            if (employeeReviewForEmployeeFromRepo == null)
+            var assignedReviewerEntity = new AssignedReviewer
             {
-                return NotFound();
-            }
+                EmployeeId = employeeId,
+                EmployeeReviewId = employeeReviewId
+            };
 
             try
             {
-                PerformanceReviewRepository.Delete(employeeReviewForEmployeeFromRepo);
+                PerformanceReviewRepository.Insert(assignedReviewerEntity);
             }
             catch (Exception)
             {
-                throw new Exception($"Deleting employee review {id} for employee {employeeId} failed on commit");
+                throw new Exception($"Inserting assigned reviewer for employee review {employeeReviewId} and employee {employeeId} failed on commit");
             }
 
-            return NoContent();
+            var newAssignedReviewer = Mapper.Map<AssignedReviewerDto>(assignedReviewerEntity);
+
+            return CreatedAtRoute("GetAssignedReviewer", new { id = newAssignedReviewer.Id }, newAssignedReviewer);
+
         }
+
+        #endregion
+
+        #endregion
     }
 }

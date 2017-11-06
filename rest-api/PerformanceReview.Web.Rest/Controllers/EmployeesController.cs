@@ -11,12 +11,22 @@ namespace PerformanceReview.Web.Rest.Controllers
     [Route("api/employees")]
     public class EmployeesController : Controller
     {
+        #region Private Properties
+
         private IPerformanceReviewRepository PerformanceReviewRepository { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public EmployeesController(IPerformanceReviewRepository performanceReviewRepository)
         {
             PerformanceReviewRepository = performanceReviewRepository;
         }
+
+        #endregion
+
+        #region Public Methods
 
         [HttpGet]
         public IActionResult GetEmployees()
@@ -115,5 +125,7 @@ namespace PerformanceReview.Web.Rest.Controllers
 
             return NoContent();
         }
+
+        #endregion
     }
 }

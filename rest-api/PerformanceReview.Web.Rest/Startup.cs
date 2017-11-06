@@ -36,13 +36,17 @@ namespace PerformanceReview.Web.Rest
                 setup.ReturnHttpNotAcceptable = true;
                 setup.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
             });
+            // Adding Db Context to IOC Pipeline
             services.AddDbContext<PerformanceReviewContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PerformanceReviewConnection")));
+
+            // Registering Repository
             services.AddScoped<IPerformanceReviewRepository, PerformanceReviewRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // For Production have global catch 500 server error
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -59,6 +63,7 @@ namespace PerformanceReview.Web.Rest
                 });
             }
 
+            // Configures Object mappings
             AutoMapper.Mapper.Initialize(cfg => 
             {
                 cfg.CreateMap<Employee, EmployeeDto>();
@@ -73,12 +78,15 @@ namespace PerformanceReview.Web.Rest
                 cfg.CreateMap<CreateFeedbackDto, Feedback>();
                 cfg.CreateMap<UpdateFeedbackDto, Feedback>();
 
+                cfg.CreateMap<AssignedReviewer, AssignedReviewerDto>();
+
             });
 
             app.UseMvc();
         }
     }
 
+    // Needed for EF Migration Generation within project
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<PerformanceReviewContext>
     {
         public PerformanceReviewContext CreateDbContext(string[] args)
