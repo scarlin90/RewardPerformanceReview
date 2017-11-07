@@ -23,4 +23,6 @@ const loginRoutes: Routes = [
     RouterModule
   ]
 })
-export class LoginRoutingModule { }
+export class LoginRoutingModule {
+
+}

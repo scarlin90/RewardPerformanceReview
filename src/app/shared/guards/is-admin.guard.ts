@@ -33,7 +33,7 @@ export class IsAdminGuard implements CanActivate {
     err => { this.isAllowed = false; },
     () => { this.isAllowed = this.storedAuth.isAdmin; });
 
-    if (!this.isAllowed){
+    if (!this.isAllowed) {
       this.router.navigate(['/login']);
     }
 
