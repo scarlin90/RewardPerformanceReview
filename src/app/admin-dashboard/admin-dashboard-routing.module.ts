@@ -24,7 +24,10 @@ const adminDashboardRoutes: Routes = [
       component: ViewEmployeeReviewsComponent,
       canActivate: [IsAdminGuard]
     },
-    { path: 'admin-dashboard/update-employee-review/:employeeId', component: UpdateEmployeeReviewComponent, canActivate: [IsAdminGuard] },
+    {
+      path: 'admin-dashboard/update-employee-review/:employeeId/:employeeReviewId',
+      component: UpdateEmployeeReviewComponent,
+      canActivate: [IsAdminGuard] },
     {
       path: 'admin-dashboard/delete-employee-review/:employeeId/:employeeReviewId',
       component: DeleteEmployeeReviewComponent,

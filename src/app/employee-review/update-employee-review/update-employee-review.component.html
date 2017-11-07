@@ -1,3 +1,8 @@
-<p>
-  update-employee-review works!
-</p>
+<input [(ngModel)]="updateEmployeeReviewDto.objectives" type="text" class="form-control" placeholder="objectives" required autofocus>
+<input [(ngModel)]="updateEmployeeReviewDto.overallPerformance" type="text" class="form-control" placeholder="overallPerformance" required>
+<input [(ngModel)]="updateEmployeeReviewDto.technicalPerformance" type="text" class="form-control" placeholder="technicalPerformance" required>
+<input [(ngModel)]="updateEmployeeReviewDto.deliveringResults" type="text" class="form-control" placeholder="deliveringResults" required>
+<input [(ngModel)]="updateEmployeeReviewDto.communications" type="text" class="form-control" placeholder="communications" required>
+<input [(ngModel)]="updateEmployeeReviewDto.leadership" type="text" class="form-control" placeholder="leadership" required>
+<input [(ngModel)]="updateEmployeeReviewDto.aspirations" type="text" class="form-control" placeholder="aspirations" required>
+<button (click)="updateEmployeeReview()">Update</button>
