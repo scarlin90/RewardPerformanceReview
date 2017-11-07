@@ -1,8 +1,7 @@
 
-export class EmployeeDto {
+export class CreateEmployeeDto {
 
     constructor() {
-        this.id = 0;
         this.username = '';
         this.password = '';
         this.firstName = '';
@@ -11,7 +10,6 @@ export class EmployeeDto {
         this.isAdmin = false;
     }
 
-    id: number;
     username: string;
     password: string;
     firstName: string;

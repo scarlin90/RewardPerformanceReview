@@ -1,0 +1,8 @@
+
+<input [(ngModel)]="employee.username" type="text" class="form-control" placeholder="Username" required autofocus>
+<input [(ngModel)]="employee.password" type="password" class="form-control" placeholder="Password" required>
+<input [(ngModel)]="employee.firstName" type="text" class="form-control" placeholder="First Name" required>
+<input [(ngModel)]="employee.surname" type="text" class="form-control" placeholder="Surname" required>
+<input [(ngModel)]="employee.jobTitle" type="text" class="form-control" placeholder="Job Title" required>
+<label><input type="checkbox" [(ngModel)]="employee.isAdmin">Admin</label>
+<button (click)="updateEmployee(employee)">Update</button>
