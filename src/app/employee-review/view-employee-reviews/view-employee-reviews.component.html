@@ -9,7 +9,7 @@
   <div>{{ employeeReview.communications }}</div>
   <div>{{ employeeReview.leadership }}</div>
   <div>{{ employeeReview.aspirations }}</div>
-  <a [routerLink]="['/admin-dashboard/update-employee-review', employee.id]">Update</a>
-  <a [routerLink]="['/admin-dashboard/delete-employee-review', employee.id]">Delete</a>
+  <a [routerLink]="['/admin-dashboard/update-employee-review', employee.id, employeeReview.id]">Update</a>
+  <a [routerLink]="['/admin-dashboard/delete-employee-review', employee.id, employeeReview.id]">Delete</a>
   <br>
 </div>
