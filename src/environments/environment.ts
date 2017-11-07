@@ -8,5 +8,6 @@ export const environment = {
 
   apiRootUrl: 'http://performancereviewwebrest20171107124230.azurewebsites.net/api/',
   authenticateUrl: 'authenticate/',
-  employeesUrl: 'employees/'
+  employeesUrl: 'employees/',
+  employeesReviewsUrl: 'employeereviews/'
 };

@@ -1,0 +1,15 @@
+
+<div *ngFor="let employeeReview of employeeReviews">
+  <div>{{ employeeReview.id }}</div>
+  <div>{{ employeeReview.employeeId }}</div>
+  <div>{{ employeeReview.objectives }}</div>
+  <div>{{ employeeReview.overallPerformance }}</div>
+  <div>{{ employeeReview.technicalPerformance }}</div>
+  <div>{{ employeeReview.deliveringResults }}</div>
+  <div>{{ employeeReview.communications }}</div>
+  <div>{{ employeeReview.leadership }}</div>
+  <div>{{ employeeReview.aspirations }}</div>
+  <a [routerLink]="['/admin-dashboard/update-employee-review', employee.id]">Update</a>
+  <a [routerLink]="['/admin-dashboard/delete-employee-review', employee.id]">Delete</a>
+  <br>
+</div>

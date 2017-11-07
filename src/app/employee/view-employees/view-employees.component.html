@@ -9,5 +9,7 @@
   <div>{{ employee.isAdmin }}</div> 
   <a [routerLink]="['/admin-dashboard/update-employee', employee.id]">Update</a>
   <a [routerLink]="['/admin-dashboard/delete-employee', employee.id]">Delete</a>
+  <a [routerLink]="['/admin-dashboard/view-employees/create-employee-review', employee.id]">Create Employee Review</a>
+  <a [routerLink]="['/admin-dashboard/view-employee-reviews', employee.id]">View Employee Reviews</a>
   <br>
 </div>
