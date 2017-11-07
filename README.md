@@ -13,7 +13,6 @@ Below is a list of the software stack I will use to create the application:
 | [Jasmine](https://jasmine.github.io/) | Front end client unit test framework |
 | [Angular 2](https://github.com/angular/quickstart) | Front end client |
 | [dotnetcore 2](https://github.com/dotnet/core) | Server side processing |
-| [MOQ 4](https://github.com/moq/moq4) | Server side unit testing |
 | [Docker](https://www.docker.com/) | Continious Delivery |
 | [Travis CI](https://travis-ci.com/) | Continious Integration |
 
@@ -25,6 +24,31 @@ Below is a list of the software stack I will use to create the application:
 
 ## Travis CI
 [RewardPerformanceReview CI](https://travis-ci.org/scarlin90/RewardPerformanceReview)
+
+## Deployed Rest Api
+
+| Identifier | HttpVerb | Endpoint Url | Dto |
+| ------ | ------ | ------ |------ |
+| GetEmployees      | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees |N/A |
+| GetEmployeeById   | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId} | N/A |
+| CreateEmployee    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/ | CreateEmployeeDto |
+| UpdateEmployee    | Put | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId} | UpdateEmployeeDto |
+| DeleteEmployee    | Delete | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId} | N/A |
+| GetEmployeeReviewsForEmployee      | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews | N/A |
+| GetEmployeeReviewForEmployee   | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews/{employeeReviewId} | N/A |
+| CreateEmployeeReviewForEmployee    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews/ | CreateEmployeeReviewDto |
+| UpdateEmployeeReviewForEmployee    | Put | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews/{employeeReviewId} | UpdateEmployeeReviewDto |
+| DeleteEmployeeReviewForEmployee   | Delete | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews/{employeeReviewId} | N/A |
+| GetFeedbackForEmployeeReviews      | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employeereviews/{employeeReviewId}/feedback | N/A |
+| GetFeedbackForEmployeeReview   | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employeereviews/{employeeReviewId}/feedback/{feedbackId} | N/A |
+| CreateFeedbackEmployeeReviewForEmployee    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews | CreateFeedbackDto |
+| UpdateFeedbackForEmployeeReview    | Put | http://performancereviewwebrest20171107124230.azurewebsites.net/api/api/employeereviews/{employeeReviewId}/feedback/{feedbackId} | UpdateFeedbackDto |
+| DeleteFeedbackForEmployeeReview   | Delete | http://performancereviewwebrest20171107124230.azurewebsites.net/api/api/employeereviews/{employeeReviewId}/feedback/{feedbackId} | N/A |
+| GetAssignedReviewers      | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/assignedreviewers |N/A |
+| GetAssignedReviewerById   | Get | http://performancereviewwebrest20171107124230.azurewebsites.net/api/assignedreviewers/{assignedReviewerId} | N/A |
+| CreateAssignedReviewer    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews{employeeReviewId}/assignedreviewers | N/A |
+| DeleteEmployee    | Delete | http://performancereviewwebrest20171107124230.azurewebsites.net/api/assignedreviewers/{assignedReviewerId} | N/A |
+| Login    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/authenticate | AuthenticateRequestDto |
 
 ## Database Design
 ![Database Design](https://docs.google.com/drawings/d/e/2PACX-1vQCqzKYpezQOlj3oc7pKbzrPkzNbIUc1nCWaMa73LdV-iBWO7gdivyd31M9_6OdvJvQG8PFY05FRPH0/pub?w=960&h=720)
