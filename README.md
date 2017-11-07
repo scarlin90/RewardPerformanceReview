@@ -25,9 +25,6 @@ Below is a list of the software stack I will use to create the application:
 ## Travis CI
 [RewardPerformanceReview CI](https://travis-ci.org/scarlin90/RewardPerformanceReview)
 
-## Database Design
-![Database Design](https://docs.google.com/drawings/d/e/2PACX-1vQCqzKYpezQOlj3oc7pKbzrPkzNbIUc1nCWaMa73LdV-iBWO7gdivyd31M9_6OdvJvQG8PFY05FRPH0/pub?w=960&h=720)
-
 ## Deployed Rest Api
 
 | Identifier | HttpVerb | Endpoint Url | Dto |
@@ -52,3 +49,6 @@ Below is a list of the software stack I will use to create the application:
 | CreateAssignedReviewer    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/employees/{employeeId}/employeereviews{employeeReviewId}/assignedreviewers | N/A |
 | DeleteEmployee    | Delete | http://performancereviewwebrest20171107124230.azurewebsites.net/api/assignedreviewers/{assignedReviewerId} | N/A |
 | Login    | Post | http://performancereviewwebrest20171107124230.azurewebsites.net/api/authenticate | AuthenticateRequestDto |
+
+## Database Design
+![Database Design](https://docs.google.com/drawings/d/e/2PACX-1vQCqzKYpezQOlj3oc7pKbzrPkzNbIUc1nCWaMa73LdV-iBWO7gdivyd31M9_6OdvJvQG8PFY05FRPH0/pub?w=960&h=720)
