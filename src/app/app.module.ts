@@ -15,6 +15,11 @@ import { CreateEmployeeComponent } from './employee/create-employee/create-emplo
 import { ViewEmployeesComponent } from './employee/view-employees/view-employees.component';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import { DeleteEmployeeComponent } from './employee/delete-employee/delete-employee.component';
+import { CreateEmployeeReviewComponent } from './employee-review/create-employee-review/create-employee-review.component';
+import { DeleteEmployeeReviewComponent } from './employee-review/delete-employee-review/delete-employee-review.component';
+import { UpdateEmployeeReviewComponent } from './employee-review/update-employee-review/update-employee-review.component';
+import { ViewEmployeeReviewsComponent } from './employee-review/view-employee-reviews/view-employee-reviews.component';
+import { ViewEmployeeReviewComponent } from './employee-review/view-employee-review/view-employee-review.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +33,11 @@ const appRoutes: Routes = [
     ViewEmployeesComponent,
     UpdateEmployeeComponent,
     DeleteEmployeeComponent,
+    CreateEmployeeReviewComponent,
+    DeleteEmployeeReviewComponent,
+    UpdateEmployeeReviewComponent,
+    ViewEmployeeReviewsComponent,
+    ViewEmployeeReviewComponent,
   ],
   imports: [
     BrowserModule,

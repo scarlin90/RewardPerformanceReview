@@ -24,7 +24,7 @@ export class DeleteEmployeeComponent implements OnInit {
     this.httpService.delete(environment.apiRootUrl + environment.employeesUrl + this.employee.id)
     .responseData()
     .subscribe(
-      (employeeReturned) => { console.error('deleted employee ' + this.employee.id); },
+      (employeeDeleted) => { console.error('deleted employee ' + this.employee.id); },
       (err) => { console.error(err.message); },
       () => {
         this.router.navigate(['/admin-dashboard/view-employees']);
