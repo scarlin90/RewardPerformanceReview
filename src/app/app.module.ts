@@ -13,6 +13,7 @@ import { LoginModule } from './login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CreateEmployeeComponent } from './employee/create-employee/create-employee.component';
 import { ViewEmployeesComponent } from './employee/view-employees/view-employees.component';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     AppComponent,
     CreateEmployeeComponent,
     ViewEmployeesComponent,
+    UpdateEmployeeComponent,
   ],
   imports: [
     BrowserModule,

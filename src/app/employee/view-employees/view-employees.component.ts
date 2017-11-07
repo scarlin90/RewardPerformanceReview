@@ -18,7 +18,7 @@ export class ViewEmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.get<EmployeeDto[]>(environment.apiRootUrl + environment.empoyeesUrl)
+    this.httpService.get<EmployeeDto[]>(environment.apiRootUrl + environment.employeesUrl)
     .responseData()
     .subscribe(
       (employeesReturned) => { this.employees = employeesReturned; console.log('Employees Received'); },

@@ -7,5 +7,6 @@
   <div>{{ employee.surname }}</div> 
   <div>{{ employee.jobTitle }}</div> 
   <div>{{ employee.isAdmin }}</div> 
+  <a [routerLink]="['/admin-dashboard/update-employees', employee.id]">Update</a>
   <br>
 </div>

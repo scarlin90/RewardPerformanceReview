@@ -57,11 +57,11 @@ export class HttpService {
      * @param body PUT data to send with request
      * @param options Options to send with request
      */
-    put<T>(url: string, body: any, options?: RequestOptionsArgs): HttpResponse<T> {
+    put<T, R>(url: string, body: any, options?: RequestOptionsArgs): HttpResponse<R> {
         if (options === undefined) {
             options = {headers : this.header};
         }
-        return new HttpResponse<T>(this.http.put(url, this.transformRequestData(options, body), options));
+        return new HttpResponse<R>(this.http.put(url, this.transformRequestData(options, body), options));
     }
 
     /**
