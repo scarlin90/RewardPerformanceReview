@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
 
-  apiRootUrl: 'http://localhost:34479/api/',
+  apiRootUrl: 'http://performancereviewwebrest20171107124230.azurewebsites.net/api/',
   authenticateUrl: 'authenticate',
+  empoyeesUrl: 'employees'
 };

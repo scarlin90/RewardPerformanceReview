@@ -11,6 +11,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginModule } from './login/login.module';
 import { AppRoutingModule } from './app-routing.module';
+import { CreateEmployeeComponent } from './employee/create-employee/create-employee.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    CreateEmployeeComponent,
   ],
   imports: [
     BrowserModule,
