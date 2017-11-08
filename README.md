@@ -11,7 +11,6 @@ Below is a list of the software stack I will use to create the application:
 | [Angular 2](https://github.com/angular/quickstart) | Front end client |
 | [Karma](https://karma-runner.github.io/1.0/index.html) | Front end client test runner |
 | [Jasmine](https://jasmine.github.io/) | Front end client unit test framework |
-| [Angular 2](https://github.com/angular/quickstart) | Front end client |
 | [dotnetcore 2](https://github.com/dotnet/core) | Server side processing |
 | [Docker](https://www.docker.com/) | Continious Delivery |
 | [Travis CI](https://travis-ci.com/) | Continious Integration |
