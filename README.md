@@ -22,6 +22,29 @@ Below is a list of the software stack I will use to create the application:
 - Assigned reviewing employees can leave more than one feedback comment
 - Potientially the owner of the performance review can add own feedback to their own performance review
 
+## Live Demo
+Follow the link below to see the current version of the application:
+[Deployed App](http://rewardperformancereview.azurewebsites.net)
+
+| Username  | Password  |
+| --------- | --------- |
+| ADMIN     | ADMIN     |
+
+### Active Functionality
+- [x] Admin view all employees
+- [x] Admin add employee
+- [x] Admin remove employee 
+- [x] Admin update employee
+- [x] Admin view employee reviews for employee
+- [x] Admin add employee review for employee
+- [x] Admin remove employee review for employee
+- [x] Admin update employee review for employee
+- [x] Login and redirect to correct dashboard (Admin/Employee)
+- [x] Admin route guards
+- [ ] Admin view Assign employees to participate in another employee's performance review
+- [ ] Employee View - List of performance reviews requiring feedback
+- [ ] Employee View Submit feedback
+
 ## Travis CI
 [RewardPerformanceReview CI](https://travis-ci.org/scarlin90/RewardPerformanceReview)
 
