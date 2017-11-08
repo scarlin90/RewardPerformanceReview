@@ -24,6 +24,7 @@ Below is a list of the software stack I will use to create the application:
 
 ## Live Demo
 Follow the link below to see the current version of the application:
+
 [Deployed App](http://rewardperformancereview.azurewebsites.net)
 
 | Username  | Password  |
