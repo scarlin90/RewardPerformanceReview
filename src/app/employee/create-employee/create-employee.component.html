@@ -2,7 +2,7 @@
 <input [(ngModel)]="createEmployeeDto.username" type="text" class="form-control" placeholder="Username" required autofocus>
 <input [(ngModel)]="createEmployeeDto.password" type="password" class="form-control" placeholder="Password" required>
 <input [(ngModel)]="createEmployeeDto.firstName" type="text" class="form-control" placeholder="First Name" required>
-<input [(ngModel)]="createEmployeeDto.surname" type="text" class="form-control" placeholder="Surname" required>
+<input [(ngModel)]="createEmployeeDto.surname" type="text" class="form-control" placeholder="Surname">
 <input [(ngModel)]="createEmployeeDto.jobTitle" type="text" class="form-control" placeholder="Job Title" required>
 <label><input type="checkbox" [(ngModel)]="createEmployeeDto.isAdmin">Admin</label>
 <button (click)="createEmployee(createEmployeeDto)">Create</button>

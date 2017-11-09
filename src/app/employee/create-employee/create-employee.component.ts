@@ -33,7 +33,7 @@ export class CreateEmployeeComponent implements OnInit {
                       (employee) => { this.createdEmployeeDto = employee; console.log('Employee Created'); },
                       (err) => { console.error(err.message); },
                       () => {
-                        this.router.navigate(['/admin-dashboard/view-employees']);
+                        this.router.navigate(['/admin-dashboard/']);
                         console.log('Employee Created'); }
                     );
     return this.createdEmployeeDto;

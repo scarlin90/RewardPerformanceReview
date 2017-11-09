@@ -1,15 +1,52 @@
 
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="padding">
+            <h1>Employees</h1>
+            <div class="row" style="margin-left: 5px; margin-top: 30px;">
+                <a [routerLink]="['/admin-dashboard/create-employee']" class="btn btn-success btn-sm">Create Employee</a>
+            </div>
 
-<div *ngFor="let employee of employees">
-  <div>{{ employee.username }}</div>
-  <div>{{ employee.password }}</div> 
-  <div>{{ employee.firstName }}</div> 
-  <div>{{ employee.surname }}</div> 
-  <div>{{ employee.jobTitle }}</div> 
-  <div>{{ employee.isAdmin }}</div> 
-  <a [routerLink]="['/admin-dashboard/update-employee', employee.id]">Update</a>
-  <a [routerLink]="['/admin-dashboard/delete-employee', employee.id]">Delete</a>
-  <a [routerLink]="['/admin-dashboard/create-employee-review', employee.id]">Create Employee Review</a>
-  <a [routerLink]="['/admin-dashboard/view-employee-reviews', employee.id]">View Employee Reviews</a>
-  <br>
+            <div class="row" style="margin-top: 30px;">
+                              
+                <div *ngFor="let employee of employees;" class="col-sm-4" style="margin-bottom: 15px;">
+                  <div style="background-color: #FFF; padding: 15px; width:90%; border: 1px solid #999; min-height: 130px;">
+                      <div>
+                      <div style="display: inline-block; width:60px;"><img style='width:60px; margin-top:-35px;' class="img-circle" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt=""></div>
+                      <div style="display: inline-block; margin-left:10px;">
+                          <span style="font-size: 16px; font-weight: bold; color: #444;">{{employee.firstName}} {{employee.surname}}</span><br>
+                          <span style="font-size: 14px; color: #666;"><i>{{employee.jobTitle}}</i></span><br>
+                          <span *ngIf="employee.isAdmin" class="label label-warning">Admin</span>
+                          <span *ngIf="!employee.isAdmin" class="label label-default">Employee</span>
+                      </div>
+                      <div style="position: relative;">
+                          <div style="position: absolute; right: 0;">
+                          <div style="display: inline-block;" class="btn-group" dropdown>
+                                  <button dropdownToggle type="button" class="btn btn-primary btn-sm dropdown-toggle">
+                                  Actions<span class="caret"></span>
+                                  </button>
+                                  <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                  <li role="menuitem"><a [routerLink]="['/admin-dashboard/update-employee', employee.id]" class="dropdown-item" href="#">Update Employee</a></li>
+                                  <li role="menuitem"><a [routerLink]="['/admin-dashboard/delete-employee', employee.id]" class="dropdown-item" href="#">Delete Employee</a></li>
+                                  </ul>
+                              </div>
+                              <div style="display: inline-block;" class="btn-group" dropdown>
+                                      <button dropdownToggle type="button" class="btn btn-primary btn-sm dropdown-toggle">
+                                      Reviews<span class="caret"></span>
+                                      </button>
+                                      <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                      <li role="menuitem"><a [routerLink]="['/admin-dashboard/create-employee-review', employee.id]" class="dropdown-item" href="#">Add Review</a></li>
+                                      <li role="menuitem"><a [routerLink]="['/admin-dashboard/view-employee-reviews', employee.id]" class="dropdown-item" href="#">View Reviews</a></li>
+                                      </ul>
+                                  </div>
+                                  </div>
+                          </div>
+                      </div>
+                    </div> 
+                                
+                  </div>
+                    
+            </div>
+        </div>
+    </div>
 </div>

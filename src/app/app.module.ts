@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
@@ -30,7 +30,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CreateEmployeeComponent,
-    ViewEmployeesComponent,
     UpdateEmployeeComponent,
     DeleteEmployeeComponent,
     CreateEmployeeReviewComponent,

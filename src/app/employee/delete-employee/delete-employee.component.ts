@@ -27,7 +27,7 @@ export class DeleteEmployeeComponent implements OnInit {
       (employeeDeleted) => { console.error('deleted employee ' + this.employee.id); },
       (err) => { console.error(err.message); },
       () => {
-        this.router.navigate(['/admin-dashboard/view-employees']);
+        this.router.navigate(['/admin-dashboard']);
         console.error('deleted employee ' + this.employee.id); }
     );
   }

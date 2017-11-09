@@ -5,16 +5,21 @@ import { HttpModule } from '@angular/http';
 import { SharedModule } from '../shared/shared.module';
 import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
 import { LocalStorageService } from '../shared/index';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ViewEmployeesComponent } from '../employee/view-employees/view-employees.component';
+import { BrowserModule } from '@angular/platform-browser';
 
   @NgModule({
     imports: [
+      BrowserModule,
+      BsDropdownModule.forRoot(),
       AdminDashboardRoutingModule,
       FormsModule,
       HttpModule,
     ],
-    declarations: [AdminDashboardComponent],
+    declarations: [ViewEmployeesComponent, AdminDashboardComponent],
     exports: [
-      AdminDashboardComponent
+      AdminDashboardComponent,
     ]
   })
   export class AdminDashboardModule { }

@@ -45,7 +45,7 @@ export class UpdateEmployeeComponent implements OnInit {
                         console.log('Employee Updated'); },
                       (err) => { console.error(err.message); },
                       () => {
-                        this.router.navigate(['/admin-dashboard/view-employees']);
+                        this.router.navigate(['/admin-dashboard']);
                         console.log('Employee Updated'); }
                     );
     return this.employee;
